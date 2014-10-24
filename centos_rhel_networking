@@ -1,0 +1,75 @@
+############################################
+## RHEL notes
+############################################
+
+#################
+#Services at Boot
+chkconfig NetworkManager off	#(debian: service network-manager stop; apt-get remove)
+chkconfig sshd on
+chkconfig network on
+chkconfig --list sshd
+[runlevels...2,3,4,5 should be on for sshd, e.g.]
+
+#############
+#/etc/sysconfig/network::
+NETWORKING=yes
+HOSTNAME=gatehide
+GATEWAY=10.0.2.2
+
+#######
+## /etc/sysconfig/network-scripts/ifcfg-eth0
+DEVICE=eth0
+BOOTPROTO=static
+IPADDR=192.168.7.254
+NETMASK=255.255.0.0
+IPADDR2=10.2.0.1		#2nd ip on same nic
+NETMASK2=255.255.255.0
+ONBOOT=yes
+
+
+############
+##cat /etc/resolv.conf 
+search mydomain.pl
+nameserver 10.0.2.3
+nameserver 8.8.8.8
+
+#### Forwarding:
+vim /etc/sysctl.conf 
+
+#####################
+## IP Tables:
+service iptables save/reload
+/etc/sysconfig/iptables    #is saved, can edit manually
+chkconfig iptables on   #(2,3,4,5)
+#be sure to turn off REJECT of icmp (ping) in sysconfig/iptables file
+iptables -t nat -A POSTROUTING -s 100.0.0.0/24 -j MASQUERADE
+iptables -t nat -A PREROUTING -p tcp -d 10.0.2.15 --dport 22002 -j DNAT 
+	--to-destination 100.0.0.2:22
+
+
+
+#####################
+## Port Forwarding:
+sysctl net.ipv4.ip_forward    #should get 1; can set by `-w ....=1`
+#permanent: /etc/sysctl.conf
+
+
+#####################
+## Static routing
+##
+
+##command:
+ip route add 91.200.38.0/24 via 10.1.0.1 dev eth1
+
+##permanent: /etc/sysconfig/network-scripts/route-eth1
+#####################
+default via 10.1.0.1 dev eth1
+91.200.38.0/24 via 10.1.0.1 dev eth1
+
+
+
+
+
+
+
+
