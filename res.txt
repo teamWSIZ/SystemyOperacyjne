@@ -1,0 +1,23 @@
+Wielkosc proby:40MB
+dt = 66.595 [ms] --> czas zapisu
+dt = 1101.472 [ms] --> czas odczytu(dysk)
+(control sum:4420)
+dt = 20.899 [ms] --> czas zapisu
+dt = 107.503 [ms] --> czas odczytu(pamiec)
+(control sum:4420)
+
+Wielkosc proby:400MB
+dt = 927.166 [ms] --> czas zapisu
+dt = 1289.282 [ms] --> czas odczytu(dysk)
+(control sum:3502)
+dt = 255.149 [ms] --> czas zapisu
+dt = 136.376 [ms] --> czas odczytu(pamiec)
+(control sum:3502)
+
+Wielkosc proby:800MB
+dt = 1797.839 [ms] --> czas zapisu
+dt = 1308.474 [ms] --> czas odczytu(dysk)
+(control sum:3171)
+dt = 609.849 [ms] --> czas zapisu
+dt = 138.937 [ms] --> czas odczytu(pamiec)
+(control sum:3171)
