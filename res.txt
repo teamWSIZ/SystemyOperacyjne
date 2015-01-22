@@ -1,3 +1,33 @@
+Test AMD 3400MHz, Mem:1600MHz:
+
+Wielkosc proby:40MB
+dt = 68.040 [ms] --> czas zapisu
+dt = 1094.052 [ms] --> czas odczytu(dysk)
+(control sum:4420)
+dt = 20.309 [ms] --> czas zapisu
+dt = 95.558 [ms] --> czas odczytu(pamiec)
+(control sum:4420)
+
+Wielkosc proby:400MB
+dt = 2776.961 [ms] --> czas zapisu
+dt = 1238.937 [ms] --> czas odczytu(dysk)
+(control sum:3502)
+dt = 192.026 [ms] --> czas zapisu
+dt = 113.341 [ms] --> czas odczytu(pamiec)
+(control sum:3502)
+
+Wielkosc proby:800MB
+dt = 6122.135 [ms] --> czas zapisu
+dt = 1279.633 [ms] --> czas odczytu(dysk)
+(control sum:3171)
+dt = 398.318 [ms] --> czas zapisu
+dt = 120.065 [ms] --> czas odczytu(pamiec)
+(control sum:3171)
+
+
+/////////////////////////////////////////////////////////
+Test kvm @ AMD 3400MHz, Mem:1600MHz:
+
 Wielkosc proby:40MB
 dt = 66.595 [ms] --> czas zapisu
 dt = 1101.472 [ms] --> czas odczytu(dysk)
