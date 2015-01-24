@@ -1,3 +1,8 @@
+// kompilacja: g++ -O3 testFilesMemory.cc -lrt
+// uruchamianie: "./a.out"
+
+
+
 #include <bits/stdc++.h>
 #define REP(i,n)  for(int i=0;i<(int)(n);++i)
 #define FOR(i,b,n)  for(int i=b;i<(n);++i)
