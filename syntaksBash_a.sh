@@ -21,3 +21,15 @@ wynik=`cat /etc/passwd | grep $user`
 if [[ -z "${wynik}" ]]; then
   echo "User $user nie istnieje na tym systemie"
 fi
+
+# Sprawdzanie czy pewna operacja się udała czy nie; po wykonaniu operacji zmienna $? zawiera 0, jeśli
+# operacja się udała, lub 1, jeśli operacja nie udała się
+rm tegoPlikuNapewnoNieMa
+if [[ $? -eq 1 ]]; then
+  echo "Poprzednia operacja nie udała się!"
+else
+  echo "Usunięto plik"
+fi
+
+
+
