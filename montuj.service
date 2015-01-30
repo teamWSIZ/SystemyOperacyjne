@@ -1,0 +1,10 @@
+[Unit]
+Description=Montuj
+#Requires=
+Before=lvm2-monitor.service
+[Service]
+Type=oneshot
+ExecStart=/zaj/skrypt.sh
+RemainAfterExit=yes
+[Install]
+WantedBy=lvm2-monitor.service
