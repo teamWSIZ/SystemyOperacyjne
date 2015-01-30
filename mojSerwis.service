@@ -1,0 +1,17 @@
+[Unit]
+Description=My test service
+
+#Requires=
+Before=local-fs.target
+After=systemd-udev-settle.service
+Requires=systemd-udev-settle.service
+
+
+[Service]
+Type=oneshot
+ExecStart=/root/sS/los S
+RemainAfterExit=yes
+ExecStop=/root/sS/los Stop
+
+[Install]
+WantedBy=local-fs.target
