@@ -38,6 +38,10 @@ vim /etc/sysctl.conf
 
 #####################
 ## IP Tables:
+## Przydatne:
+## yum install net-tools
+## yum install iptables-services
+
 service iptables save/reload
 /etc/sysconfig/iptables    #is saved, can edit manually
 chkconfig iptables on   #(2,3,4,5)
