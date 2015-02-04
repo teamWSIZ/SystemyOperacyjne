@@ -1,5 +1,5 @@
 
-#wyniki powinny byc ~6sek
+#wyniki powinny byc ~4sek
 
 import math
 u=0
