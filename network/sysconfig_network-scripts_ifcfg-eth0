@@ -1,0 +1,10 @@
+TYPE="Ethernet"
+BOOTPROTO="static"
+NAME="eth0"
+ONBOOT="yes"
+HWADDR="52:54:00:9d:d3:a8"  #po klonie wirtualki, trzeba tu wpisac nowy mac-address
+IPADDR=192.168.122.132
+NETMASK=255.255.255.0
+GATEWAY=192.168.122.1
+IPADDR2=192.168.122.177
+NETMASK2=255.255.255.0
