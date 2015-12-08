@@ -1,6 +1,7 @@
 ##########################################################################
 ## Notes on firewall-cmd 
 ## Checked on CentOS7, Fedora21
+## https://fedoraproject.org/wiki/FirewallD
 ##########################################################################
 
 
@@ -43,6 +44,11 @@ firewall-cmd --zone=public --list-interfaces
 firewall-cmd --get-zone-of-interface enp0s3
 firewall-cmd --get-zone-of-source=<source[/mask]>
 
+#####################################
+# Assigning interfaces: 
+#####################################
+firewall-cmd --zone=public --remove-interface enp0s8
+firewall-cmd --zone=trusted --add-interface enp0s8
 
 ###
 ## Q:
@@ -50,8 +56,10 @@ firewall-cmd --get-zone-of-source=<source[/mask]>
 ## --> AVOID USING DIRECT RULES !!!!
 
 ## Masquerade:
-firewall-cmd --zone=public --query-masquerade
 firewall-cmd --zone=public --add-masquerade
+
+##sprawdzenie przez 
+
 
 ## Port forward && block ping etc:
 http://www.tecmint.com/firewalld-rules-for-centos-7/2/
