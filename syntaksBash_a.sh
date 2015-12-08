@@ -22,6 +22,10 @@ if [[ -z "${wynik}" ]]; then
   echo "User $user nie istnieje na tym systemie"
 fi
 
+for i in {1..10}; do
+  echo ${i}
+done
+
 # Sprawdzanie czy pewna operacja się udała czy nie; po wykonaniu operacji zmienna $? zawiera 0, jeśli
 # operacja się udała, lub 1, jeśli operacja nie udała się
 rm tegoPlikuNapewnoNieMa
