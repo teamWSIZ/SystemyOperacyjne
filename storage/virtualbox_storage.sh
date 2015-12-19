@@ -37,7 +37,7 @@ Storage Controller Bootable (0):        on
 SATA (0, 0): /home/mareckip/VirtualBox VMs/Cenos7 Zajecia/Cenos7 Zajecia.vdi (UUID: 4854da1e-b2a3-4c98-87a7-2a9eca240f75)
 
 ## Dodanie dysku do vm i kontrolera (na działającej VM; tego nie ma w GUI):
-
+# "port" to uchwyt gdzie dysk ma być zapięty; jeśli jest tam już dysk, to zostanie usunięty/wymieniony przez nowy
 VBoxManage storageattach "Cenos7 Zajecia" --storagectl SATA --port 1 --type hdd --medium aa.vdi
 
 # ponowne sprawdzenie kontrolera pokaże:
