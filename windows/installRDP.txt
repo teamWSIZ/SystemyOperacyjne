@@ -1,0 +1,7 @@
+Dashboard> (RoleBased [not Feature])
+RemoteDesktopServices   (after clicked; some other "list of features appeared")
+On the left select "Roles>RD Session Host"
+Install
+Reboot
+Amin can still login via RDP
+Just create users and add to group "Remote Desktop Users"
