@@ -1,0 +1,18 @@
+Program(command)        Funkcja:
+compmgmt.msc            Zarządzanie lokalnymi userami, kolektorami wydajności itp
+devmgmt.msc             Zarządzanie hardwarem
+control main.cpl        Własności myszy
+control Ncpa.cpl        Własności sieci
+control sysdm.cpl       Nazwa systemu, remote properties
+control desk.cpl        Rozdzielczość
+
+
+
+
+
+
+
+
+
+Uruchamianie jako admin:
+runas /user:administrator control
