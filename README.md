@@ -1,4 +1,4 @@
-systemyoperacyjne2014
+systemyoperacyjne
 =====================
 
-Kurs systemow operacyjnych, WSIZ 2014
+Materiały do kursu systemów operacyjnych na WSIZ, BB
