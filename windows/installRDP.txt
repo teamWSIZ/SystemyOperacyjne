@@ -1,4 +1,4 @@
-Dashboard> (RoleBased [not Feature])
+Dashboard> (RoleBased [not Feautre, but clicking "Role or Feature based"])
 RemoteDesktopServices   (after clicked; some other "list of features appeared")
 On the left select "Roles>RD Session Host"
 Install
