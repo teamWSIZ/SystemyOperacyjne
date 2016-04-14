@@ -3,5 +3,5 @@ RemoteDesktopServices   (after clicked; some other "list of features appeared")
 On the left select "Roles>RD Session Host"
 Install
 Reboot
-Amin can still login via RDP
+Amin can still login via RDP (no!; had to turn of "only network level autentication"!!)
 Just create users and add to group "Remote Desktop Users"
