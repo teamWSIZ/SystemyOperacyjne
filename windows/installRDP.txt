@@ -4,4 +4,8 @@ On the left select "Roles>RD Session Host"
 Install
 Reboot
 Amin can still login via RDP (no!; had to turn of "only network level autentication"!!)
-Just create users and add to group "Remote Desktop Users"
+
+Create users and add to group "Remote Desktop Users":
+
+for i in {1..10}; do net user Aaaaa$i Pass$i /add; done
+for i in {1..10}; do net group "Remote Desktop Users" Aaaaa$i /add; done
