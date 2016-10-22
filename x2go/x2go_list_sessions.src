@@ -1,0 +1,1 @@
+for sid in `x2golistsessions_root | awk -F \| '{print $2}'`; do echo $sid; done
