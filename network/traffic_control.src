@@ -1,0 +1,22 @@
+# dump first
+  501  tc -s c s
+  502  tc -s
+  503  tc -s c s eth4
+  504  tc class
+  505  tc q
+  506  ip r
+  507  tc qdisc add dev eth4 root handle 1: htb default 10
+  508  tc qdisc show
+  509  tc class add dev eth4 parent 1: classid 1:1 htb
+  510  man tc
+  511  tc class add dev eth4 parent 1: classid 1:1 htb rate 4.8mbps ceil 4.8mbps
+  512  tc class add dev eth3 parent 1:1 classid 1:10 htb rate 4.8mbps ceil 4.8mbps prio 1
+  513  tc class add dev eth4 parent 1:1 classid 1:10 htb rate 4.8mbps ceil 4.8mbps prio 1
+  514  tc class add dev eth4 parent 1:1 classid 1:20 htb rate 4.8mbps ceil 4.8mbps prio 2
+  515  tc qdisc add dev eth3 parent 1:10 handle 110: sfq
+  516  tc qdisc add dev eth4 parent 1:10 handle 110: sfq
+  517  tc qdisc add dev eth4 parent 1:20 handle 120: sfq
+  518  tc filter add dev eth4 parent 1:0 protocol ip prio 1 handle 1 fw classid 1:10
+  519  tc filter add dev eth4 parent 1:0 protocol ip prio 2 handle 2 fw classid 1:20
+  520  iptables -t mangle -I PREROUTING -p tcp --sport 80 -j RETURN
+  521  iptables -t mangle -I PREROUTING -p tcp --sport 80 -j MARK --set-mark 0x2
