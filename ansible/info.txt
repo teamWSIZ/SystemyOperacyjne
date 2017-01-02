@@ -1,0 +1,31 @@
+dnf install ansible
+dnf install python2-dnf
+
+#edited /etc/ansible/hosts
+
+[wsi]
+192.168.43.6
+
+#install module
+#as some user
+ansible wsi -s --ask-sudo-pass -m dnf -a 'name=htop state=latest'
+
+#as root
+ansible wsi -m dnf -a 'name=htop state=latest'
+
+
+
+#copy module
+ansible wsi -m copy -a 'src=/etc/aa dest=/etc/bb'
+
+#system variables
+ansible wsi -m setup
+
+#variables for hosts
+[wsi]
+192.168.43.6 nnn=abc
+
+ansible wsi -m copy -a 'src=/etc/aa dest=/etc/bb{{nnn}}'
+-->/etc/bbabc
+
+
