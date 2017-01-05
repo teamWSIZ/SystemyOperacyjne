@@ -1,0 +1,6 @@
+---
+- hosts: s42
+  tasks:
+    - name: Install vim
+      become: true
+      apt: pkg=vim state=installed
