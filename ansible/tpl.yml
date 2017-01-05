@@ -1,0 +1,6 @@
+---
+- hosts: s42
+  tasks:
+    - name: Create user file 
+      become: true
+      template: src=templates/stud.j2 dest=/var/log/stud.txt
