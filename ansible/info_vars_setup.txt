@@ -1,0 +1,45 @@
+ansible s42 -m apt -a 'pkg=htop state=installed update_cache=true' --sudo
+
+ansible atlanta -a "/sbin/reboot" -f 10
+
+ansible webservers -m service -a "name=httpd state=started"
+
+ansible <IP> -m setup
+
+ansible all -m setup -a 'filter=ansible_distribution_version'
+
+#set remote user in `/etc/ansible/ansible.cfg`
+
+"ansible_processor"
+"ansible_processor_cores": 1, 
+"ansible_processor_count": 1, 
+"ansible_processor_threads_per_core": 1, 
+
+"ansible_memtotal_mb": 1993, 
+
+"ansible_nodename": "User15"
+"ansible_hostname": "User15",
+ "ansible_system_vendor": "FUJITSU SIEMENS", 
+
+
+#nmap -O -v 10.10.21.10
+#alias va='vim /etc/ansible/hosts'
+ansible s43 -m setup -a 'filter=ansible_memtotal_mb'
+ansible s43 -m setup -a 'filter=ansible_processor_cores'
+
+---------------
+host variables:
+[s43]
+10.10.41.1	a=1
+10.10.41.2	a=2
+....
+
+group vars
+[s43:vars]
+sala=43
+
+
+https://github.com/ansible/ansible-examples/tree/master/lamp_simple
+
+
+
