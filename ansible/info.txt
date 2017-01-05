@@ -28,4 +28,4 @@ ansible wsi -m setup
 ansible wsi -m copy -a 'src=/etc/aa dest=/etc/bb{{nnn}}'
 -->/etc/bbabc
 
-
+ansible s42 -m apt -a 'pkg=htop state=installed update_cache=true' -u wsiz --sudo
