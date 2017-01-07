@@ -1,6 +1,6 @@
 ---
-- hosts: s42
+- hosts: wsi
   tasks:
     - name: Install vim
       become: true
-      apt: pkg=vim state=installed
+      dnf: name=vim state=latest
