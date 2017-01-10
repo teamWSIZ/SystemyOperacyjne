@@ -1,0 +1,6 @@
+dnf install screen
+screen
+Ctrl-a ?
+Ctrl-a d  #detach
+...
+screen -r #reattach
