@@ -1,0 +1,23 @@
+---
+- hosts: mojagrupa
+  tasks:
+
+    - name: Install vim
+      become: true
+      apt: pkg=vim state=installed
+
+    - name: Install htop
+      become: true
+      apt: pkg=htop state=installed
+
+    - name: Install rdesktop
+      become: true
+      apt: pkg=rdesktop state=installed
+
+    - name: Install remmina
+      become: true
+      apt: pkg=remmina state=installed
+
+    - name: Install x2goclient
+      become: true
+      apt: pkg=x2goclient state=installed
