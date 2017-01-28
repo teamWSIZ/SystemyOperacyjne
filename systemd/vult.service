@@ -1,0 +1,11 @@
+[Unit]
+Description=Skrypt dla start/stop/restart
+
+[Service]
+Type=oneshot
+ExecStart=/scripts/vult.sh start
+ExecStop=/scripts/vult.sh stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
