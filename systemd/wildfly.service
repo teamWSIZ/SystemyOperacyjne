@@ -1,0 +1,9 @@
+[Unit]
+Description=Skrypt startujący AS wildfly 
+
+[Service]
+Type=simple
+ExecStart=/opt/Wildfly/bin/standalone.sh
+
+[Install]
+WantedBy=multi-user.target
