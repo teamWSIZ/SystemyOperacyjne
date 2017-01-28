@@ -1,0 +1,11 @@
+#Prosty serwis startujący skrypt "deus.sh" przy starcie systemu
+
+[Unit]
+Description=Nasz logger
+
+[Service]
+Type=oneshot
+ExecStart=/scripts/deus.sh
+
+[Install]
+WantedBy=multi-user.target
