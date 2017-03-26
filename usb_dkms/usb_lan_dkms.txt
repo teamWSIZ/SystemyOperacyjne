@@ -1,0 +1,5 @@
+Wykrywanie sprzętów usb
+
+lsusb 
+
+lshw -C Network
