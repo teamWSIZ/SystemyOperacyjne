@@ -3,3 +3,8 @@ Wykrywanie sprzętów usb
 lsusb 
 
 lshw -C Network
+
+#kernel modules
+lsmod | grep ^iwl
+modinfo iwl4965
+
