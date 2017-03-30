@@ -1,0 +1,26 @@
+enable
+conf t
+interface FastEthernet0/0
+ip address 10.10.0.1 255.0.0.0
+exit
+no shutdown
+
+-------------------------------------
+# allowing login to switch: 
+
+#naming vlan
+conf t
+vlan 401
+name pi
+end
+
+#display (exec)
+show vlan id 401
+show ip vlan 401
+show ip int bf   #brief; shows ports and vlans
+
+
+# attaching vlan to port
+conf t
+interface FastEthernet0/2
+switchport access vlan 401	#(sw a v 401)
