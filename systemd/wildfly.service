@@ -1,5 +1,15 @@
+# /opt/Wildfly/bin/standalone.sh 
+#
+# network.target just guarantees that the network service has been started, not that there's some actual configuration. 
+# You need to order after network-online.target and pull it in to achive that.
+#
+# /etc/systemd/system
+
+
 [Unit]
-Description=Skrypt startujący AS wildfly 
+Description=Skrypt startujący serwer aplikacyjny wildfly dla aplikaji web javy
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 Type=simple
