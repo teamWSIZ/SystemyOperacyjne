@@ -21,3 +21,6 @@ systemctl stop sshd
 systemctl status sshd
 systemctl enable sshd
 systemctl disable sshd
+
+#dodawanie rout (statycznych)
+ip route add 10.0.2.0/24 dev enp0s3
