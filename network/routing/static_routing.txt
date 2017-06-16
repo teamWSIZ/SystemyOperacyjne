@@ -4,10 +4,20 @@
 *F2	(VBHON1, VBHON2)
 *F3	(VBHON2)
 
-# Dodawanie/usuwanie adresów IP z lini komend (root)
+# Sprawdzanie IP:
+ip r
 
-dodawanie:
+## Dodawanie/usuwanie adresów IP z lini komend (root)
+# dodawanie:
 ip addr add 21.0.0.1/8 dev enp0s8
-
-usuwanie:
+# usuwanie:
 ip addr del 21.0.0.1/8 dev enp0s8
+
+
+## Włączanie/wyłączanie serwera sshd na Fedorze:
+
+systemctl start sshd
+systemctl stop sshd
+systemctl status sshd
+systemctl enable sshd
+systemctl disable sshd
