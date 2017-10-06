@@ -1,0 +1,1 @@
+nmap xx.xx.xx.xx -sF -A --osscan-guess -p 80 -Pn
