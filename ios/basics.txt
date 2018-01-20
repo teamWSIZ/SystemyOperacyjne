@@ -15,8 +15,6 @@ int f0/1
 no shutdown
 end
 
-
-
 -------------------------------------
 # allowing login to switch: 
 (on switch)
@@ -73,11 +71,14 @@ switchport access vlan 401	#(sw acc vlan 401)
 ---
 no sw acc vlan 401    #remove switchport ==> sets to vlan 1
 
-#setting up SNMP
+#setting up SNMP (v1; community strings)
 snmp-server community lalala1 RO
 snmp-server community xxxxxx2 RW
 ---
 no snmp-server
+
+
+#on linux install snmp; snmpwalk -v2v -c lalala1 10.10.2.11
 
 #grep:
 sh run | include snmp
