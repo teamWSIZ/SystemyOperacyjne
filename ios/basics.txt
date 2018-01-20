@@ -3,11 +3,19 @@
 Cisco IOS
 
 enable
-configure terminal
-interface FastEthernet0/0
+configure terminal    #conf t
+interface FastEthernet0/1     #int f0/1
 ip address 10.10.0.1 255.0.0.0
 exit
 no shutdown
+
+-------------------------------------
+conf t
+int f0/1
+no shutdown
+end
+
+
 
 -------------------------------------
 # allowing login to switch: 
@@ -19,15 +27,67 @@ vlan 401
 name pi
 end
 
-#display (exec)
-show vlan id 401
-show ip vlan 401
-show ip int bf   #brief; shows ports and vlans
+#vlan ip
+conf t
+int vlan 1
+ip addr 10.10.2.11 255.255.0.0
+non shutdown
+end
+--
+no ip add   #remove ip address
+
+
+#vlan status
+sh vlan
+sh vlan id 1
+sh ip int vlan1
+
+
+# Interface status
+show ip int br   #brief; shows ports and vlans
+sh ip i vlan1
+sh int f0/1
+sh int vlan1
+
+#ssh
+conf t
+hostname sw1
+ip domain-name wsi.edu
+crypto key generate rsa   #generate legth 1024
+
+line vty 0 4    #enters conf for `line` (config-line)
+transport input ssh
+login local
+username admin1 password admin2
+enable secret admin2
+service password-encryption
+end
+sh ip ssh
+
 
 
 # attaching vlan to port
 conf t
-interface FastEthernet0/2
-switchport access vlan 401	#(sw a v 401)
+int f0/2
+switchport access vlan 401	#(sw acc vlan 401)
+---
+no sw acc vlan 401    #remove switchport ==> sets to vlan 1
+
+#setting up SNMP
+snmp-server community lalala1 RO
+snmp-server community xxxxxx2 RW
+---
+no snmp-server
+
+#grep:
+sh run | include snmp
+sh run | section snmp
+sh run | section snmp
+sh run | section snmp
+
+## finally, always
+sh running    #sh run
+copy running-config startup-config    #copy run start
+
 
 
