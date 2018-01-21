@@ -29,14 +29,14 @@ end
 conf t
 int vlan 1
 ip addr 10.10.2.11 255.255.0.0
-non shutdown
+no shutdown
 end
 --
 no ip add   #remove ip address
 
 
 #vlan status
-sh vlan
+sh vlan     #or sh vlan-sw
 sh vlan id 1
 sh ip int vlan1
 
