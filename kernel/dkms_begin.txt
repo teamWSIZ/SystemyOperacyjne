@@ -1,0 +1,59 @@
+######################
+## dkms notes
+- DKMS is called automatically upon installation of new Ubuntu kernel-image 
+
+- To use a module with DKMS, one places the module installation files (could be source code or binary) in /usr/src/-, along with a configuration file dkms.conf that tells DKMS how to build/configure the module and what its name is.
+
+- All directories are with respect to the location of the dkms.conf
+
+- The name of the module without the .o or .ko extension.
+
+- we install the module into DKMS by copying the module installation files into the kernel source tree /usr/src/-
+	cp -R . /usr/src/awesome-1.1
+	dkms add -m awesome -v 1.1
+
+- DKMS has now added our module to its list of modules to build for future kernel installations
+- instruct dkms to build and install the module
+	dkms build -m awesome -v 1.1
+	dkms install -m awesome -v 1.1
+
+------------
+nvidia example: 
+	apt-get install dkms build-essential make
+	(You will also need the Kernel-header for ALL the kernels you plan to us)
+	(module complains about "kernel headers" you actually need to install the kernel-devel package for the kernel you're running.)
+	apt-get install linux-headers-generic
+	dkms status
+
+other (having binaries of the module (after some compile, or from net)): 
+	cp -R . /usr/src/rr62x-1.2
+	dkms add -m rr62x -v 1.2			#Creating symlink /var/lib/dkms/rr62x/1.2/source -> /usr/src/rr62x-1.2
+	dkms build -m rr62x -v 1.2
+	dkms install -m rr62x -v 1.2		#Installing to /lib/modules/3.8.0-34-generic/updates/dkms/
+	modprobe rr62x
+
+----
+TP-Link Archer T1U USB
+	#chipset used Mediatek MT7610U
+
+	apt install mt7610u-dkms
+	#Obviously the dkms driver doesn't build with the 4.10 kernel. It needs patching.
+
+		blacklist the other drivers you built:
+		echo "blacklist mt7650u_sta_net"  >>  /etc/modprobe.d/blacklist.conf
+		echo "blacklist mt7650u_sta"  >>  /etc/modprobe.d/blacklist.conf
+
+		git clone https://github.com/lixz789/mt7610u_wifi_sta_v3002_dpo_20130916.git
+		cd mt7610u_wifi_sta_v3002_dpo_20130916
+		make
+		make install
+		modprobe mt7650u_sta
+		lsmod | grep mt76
+		dmesg | grep mt76
+		modinfo mt7650u_sta | grep 0105
+	
+	#lsmod is a command on Linux systems. It shows which loadable kernel modules are currently loaded.
+
+Abridged example output:
+
+https://ubuntuforums.org/showthread.php?t=2334307
