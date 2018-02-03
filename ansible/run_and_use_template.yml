@@ -1,0 +1,12 @@
+---
+- hosts: wsi
+  tasks:
+
+    - name: Create user file
+      become: true
+      template:
+        src=templates/userwsiz.j2
+        dest=/home/stud/Desktop/Indormacje_dla_usera.txt
+        owner=student
+        group=student
+        mode=0644
