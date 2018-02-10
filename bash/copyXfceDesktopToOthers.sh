@@ -1,14 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 
-function setupUser {
+setupUser() {
   USER=$1
-  adduser $USER
-  echo $USER:xxxxxxxxxx | chpasswd
-  cp -r /home/pm/.config /home/$USER
+  echo "Creating user" 
+  echo $USER
+  useradd -m $USER
+  echo $USER:blablabla | chpasswd
+  cp -r /home/ttt/.config /home/$USER
   chown -R $USER:$USER /home/$USER
 }
 
-for i in {1..10}; 
+for i in {1..50}; 
 do 
-  setupUser user$i
+    setupUser user$i
 done
