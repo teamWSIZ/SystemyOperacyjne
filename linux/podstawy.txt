@@ -3,6 +3,7 @@ User:
 - root --> prompt #
 
 przejście na root'a: 'sudo su' (potem hasło usera)
+wyjście z roota: Ctrl D
 
 W konsoli:
 arrow up / down ---> poprzednie komendy
@@ -29,3 +30,5 @@ komendy sieciowe
 - traceroute google.com #podaje kolejne routery na drodze do google.com
 
 oraz "NetworkManager" (GUI w prawym górnym rogu)
+
+- tcpdump   #przegląd przez wszystkie pakiety latające w sieci
