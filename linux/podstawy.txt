@@ -1,0 +1,19 @@
+User:
+- zwykły
+- root --> prompt #
+
+przejście na root'a: 'sudo su' (potem hasło usera)
+
+W konsoli:
+arrow up / down ---> poprzednie komendy
+history   -- wszystkie poprzednie komendy
+dokańczanie komend: [Tab]
+
+
+Nawigacja po folderach:
+- cd nazwa_folderu
+- cd ..   (do folderu wyżej)
+- cd ~    (do folderu domowego)
+- cd /    (na samą górę)
+
+- mkdir nowy_folder
