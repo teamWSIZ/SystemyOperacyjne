@@ -1,0 +1,2 @@
+Zadania do wykonania; w wiekszosci przypadkow zdanie polega zapewnieniu pelnej funkcjonalnosci sieci, 
+tzn. kazdy z elementow (w tym PC, routery) powinien byc w stanie ping-owac pozostale elementy.
