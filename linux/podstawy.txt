@@ -17,3 +17,15 @@ Nawigacja po folderach:
 - cd /    (na samą górę)
 
 - mkdir nowy_folder
+- rm -rf nazwa_folderu_do_wycięcia          #!!!!!!!!!!!! uwaga -- może wyciąć wszystko i się nie zapyta o zgodę
+
+
+--------------------------------------
+komendy sieciowe
+- ip r        #podaje info o aktualnym adresie IP, adresie gateway-a, i podsieciach / routingu
+- ip a        #informacje o wszystkich kartach sieciowych (niekoniecznie włączonych)
+- ip n        #informacje o widzianych dotychczas kompach
+
+- traceroute google.com #podaje kolejne routery na drodze do google.com
+
+oraz "NetworkManager" (GUI w prawym górnym rogu)
