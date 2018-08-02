@@ -1,0 +1,103 @@
+Cisco IOS multicast:
+
+Router# show ip igmp interface vlan 43
+Vlan43 is up, line protocol is up
+   Internet address is 43.0.0.1/24
+   IGMP is enabled on interface
+   Current IGMP host version is 2
+   Current IGMP router version is 2
+   IGMP query interval is 60 seconds
+   IGMP querier timeout is 120 seconds
+   IGMP max query response time is 10 seconds
+   Last member query count is 2
+   IGMP activity:1 joins, 0 leaves
+   Multicast TTL threshold is 0
+   Multicast designated router (DR) is 43.0.0.1 (this system)
+   IGMP querying router is 43.0.0.1 (this system)
+   Multicast groups joined by this system (number of users): 224.0.1.40(1) 
+
+
+Router# show ip igmp snooping statistics interface vlan 25
+	Snooping statistics for Vlan25
+ #channels: 2
+ #hosts   : 2
+ Source/Group            Interface       Reporter      Uptime        Last-Join   Last-Leave
+ 10.1.1.1/224.1.1.1      Vl25:VPLS3/62    2.2.2.1       00:01:47      00:00:51      -     
+ 10.2.2.2/224.2.2.1      Vl25:A-VPLS14/0  2.2.2.2       00:01:50      00:00:52 		-
+
+##############################
+vvvv https://www.cisco.com/c/en/us/support/docs/ip/ip-multicast/13726-57.html#showippimneighbor
+
+R1# show ip mroute summary
+IP Multicast Routing Table
+Flags: D - Dense, S - Sparse, C - Connected, L - Local, P - Pruned
+       R - RP-bit set, F - Register flag, T - SPT-bit set, J - Join SPT
+       M - MSDP created entry, X - Proxy Join Timer Running
+       A - Advertised via MSDP
+Outgoing interface flags: H - Hardware switched
+Timers: Uptime/Expires
+Interface state: Interface, Next-Hop or VCD, State/Mode
+(*, 239.255.0.1), 01:57:07/00:02:59, RP 192.168.7.2, flags: SJCF
+(133.33.33.32, 239.255.0.1), 01:56:23/00:02:59, flags: CJT
+(192.168.9.1, 239.255.0.1), 01:57:07/00:03:27, flags: CFT
+(*, 224.0.1.40), 1d00h/00:00:00, RP 192.168.7.2, flags: SJPCL
+
+
+R1# show ip mroute
+(*, 239.255.0.1), 01:55:27/00:02:59, RP 192.168.7.2, flags: SJCF
+  Incoming interface: Ethernet0, RPF nbr 192.168.10.2
+  Outgoing interface list:
+    Ethernet1, Forward/Sparse, 01:55:27/00:02:52
+(133.33.33.32, 239.255.0.1), 01:54:43/00:02:59, flags: CJT
+  Incoming interface: Ethernet0, RPF nbr 192.168.10.2
+  Outgoing interface list:
+    Ethernet1, Forward/Sparse, 01:54:43/00:02:52
+(*, 224.0.1.40), 1d00h/00:00:00, RP 192.168.7.2, flags: SJPCL
+  Incoming interface: Ethernet0, RPF nbr 192.168.10.2
+  Outgoing interface list: Null
+
+Router# show ip mroute active
+Active IP Multicast Sources - sending >= 4 kbp
+Group: 239.255.0.1, (?)
+   Source: 133.33.33.32 (?)
+   Rate: 10 pps/115 kbps(1sec), 235 kbps(last 23 secs), 87 kbps(life avg)
+
+
+R1# debug ip igmp
+12:32:51.065: IGMP: Send v2 Query on Ethernet1 to 224.0.0.1 
+12:32:51.069: IGMP: Set report delay time to 9.4 seconds for 224.0.1.40 on Ethernet1 
+12:32:56.909: IGMP: Received v1 Report from 192.168.9.1 (Ethernet1) for 239.255.0.1 
+12:32:56.917: IGMP: Starting old host present timer for 239.255.0.1 on Ethernet1 
+12:33:01.065: IGMP: Send v2 Report for 224.0.1.40 on Ethernet1 
+12:33:01.069: IGMP: Received v2 Report from 192.168.9.4 (Ethernet1) for 224.0.1.40 
+12:33:51.065: IGMP: Send v2 Query on Ethernet1 to 224.0.0.1
+
+R1# debug ip mrouting 239.255.0.1
+13:17:27.821: MRT: Create (*, 239.255.0.1), RPF Null, PC 0x34F16CE 
+13:17:27.825: MRT: Create (133.33.33.32/32, 239.255.0.1), RPF Ethernet0/192.168.10.2, PC 0x34F181A 
+13:17:30.481: MRT: Create (192.168.9.1/32, 239.255.0.1), RPF Ethernet1/0.0.0.0, PC 0x34F18
+
+
+R1# debug ip pim 
+ PIM: Send v2 Hello on Ethernet0 
+ PIM: Send v2 Hello on Ethernet1 
+ PIM: Received v2 Hello on Ethernet0 from 192.168.10.2 
+ PIM: Send v2 Hello on Ethernet0 
+ PIM: Send v2 Hello on Ethernet1 
+ PIM: Building Join/Prune message for 239.255.0.1 
+ PIM: v2, for RP, Join-list: 192.168.7.2/32, RP-bit, WC-bit, S-bit 
+ PIM: Send v2 periodic Join/Prune to RP via 192.168.10.2 (Ethernet0) 
+ PIM: Received RP-Reachable on Ethernet0 from 192.168.7.2 for group 239.255.0.1 
+ PIM: Update RP expiration timer (270 sec) for 239.255.0.1
+
+R1# show ip pim rp mapping 
+PIM Group-to-RP Mappings 
+Group(s) 224.0.1.40/32 
+    RP 192.168.7.2 (?), v1 
+    	Info source: local, via Auto-RP 
+        Uptime: 2d00h, expires: never    
+Group(s): 224.0.0.0/4, Static 
+    RP: 192.168.7.2 (?)
+
+
+https://www.cisco.com/c/en/us/support/docs/ip/ip-multicast/16450-mcastguide0.html?referring_site=bodynav
