@@ -4,7 +4,9 @@
 (shutdown the VM first) 
 
 `qemu-img info dohaDocker.qcow2 `
+
 `qemu-img resize dohaDocker.qcow2 +10G`
+
 `qemu-img check -r all dohaDocker.qcow2`
 
 ```No errors were found on the image.
