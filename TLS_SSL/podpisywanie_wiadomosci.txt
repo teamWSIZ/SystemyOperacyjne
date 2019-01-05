@@ -1,0 +1,45 @@
+
+- klucz prywatny
+
+- klucz publiczny z prywatnego:
+openssl pkey -in server.key -pubout -outform pem > server.pub
+
+
+- klucz prywatny + self-signed-certificate dla CA:
+openssl req -x509 -sha256 -newkey rsa:2048 -keyout ca.key -out ca.crt -days 30000
+
+- sprawdzenie czy ca.crt podpisał ca.crt
+ openssl verify -CAfile ca.crt ca.crt 
+
+- generowanie requestu podpisania certyfikatu:
+openssl req -passin pass:password -new -key server.key -out server.csr
+
+
+- podpisanie CSR’a przez CA
+openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 1500 -sha256
+
+- weryfikacja podpisanego certyfikatu:
+openssl verify -CAfile ca.crt server.crt
+
+———————
+
+—kodowanie pliku dziwna.txt (potrzebuje klucza publicznego adresata):
+
+openssl rsautl -encrypt -inkey server.pub -pubin -in dziwna.txt -out dziwna.enc
+
+-odkodowywanie pliku dziwna.enc (potrzebuje klucza prywatnego adresata):
+
+openssl rsautl -decrypt -inkey server.key -in dziwna.enc -out odkodowana.txt
+
+————
+
+wiadomość do podpisania:
+echo "Nasza spółka przyjmuje Państwa warunki" > dokument.txt
+
+- podpisanie dokumentu (potrzebuje klucza prywatnego nadawcy)
+dgst -sha1 -sign server.key -out dokument.sha1 dokument.txt
+
+- sprawdzenie czy dokument `dokument.txt` z podpisem w `dokument.sha1` został podpisany przez serwer.pub (potrzebuje klucza publicznego nadawcy)
+
+openssl dgst -sha1 -verify server.pub -signature dokument.sha1 dokument.txt
+
