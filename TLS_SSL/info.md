@@ -144,8 +144,11 @@ xldn4646vdap.ldn.swissbank.com, Feb 27, 2015, PrivateKeyEntry,
 Certificate fingerprint (SHA1): 71:0B:B8:CB:0D:D6:F0:54:96:7C:16:A5:72:79:CC:82:85:9E:CC:51
 woktest1, Feb 27, 2015, trustedCertEntry,
 Certificate fingerprint (SHA1): F5:E9:CB:E7:B7:F5:81:86:A5:47:EE:80:5D:FC:5B:33:48:84:80:BB
-
 ```
+Conversion to `.p12`:
+
+`keytool -importkeystore -srckeystore store.jks --destkeystore store.p12 -srcstoretype JKS -deststoretype PKCS12 -deststorepass somepassword`
+
 
 ## File formats
 
