@@ -1,0 +1,38 @@
+firewall-cmd --zone=public --list-all
+
+#otwieranie/zamykanie portów
+firewall-cmd --zone=public --add-port=88/tcp
+firewall-cmd --zone=public --remove-port=88/tcp
+
+#wykonywanie przebicia (NAT) portu na host:port w LAN
+firewall-cmd --zone=public --add-forward-port=port=4321:proto=tcp:toaddr=10.10.0.19:toport=3389
+firewall-cmd --zone=public --remove-forward-port=port=4321:proto=tcp:toaddr=10.10.0.19:toport=3389
+
+firewall-cmd --runtime-to-permanent
+
+# firewall-cmd --zone=public --add-masquerade
+
+
+systemctl status firewalld
+systemctl start/stop/enable/disable firewalld
+
+-------------------------------------
+
+
+sprawdzanie interfejsów command-line:
+
+# ogólny przegląd
+ip r
+
+# wszystkie interfejsy:
+ip a
+
+# dodawanie/zabieranie adresów
+ip addr add 10.10.111.111/24 dev ens3
+ip addr del 10.10.111.111/24 dev ens3
+
+# sąsiedzi w sieci (+MAC)
+ip n  
+---------------------------------
+tcpdump -i ens3 | grep who
+tcpdump -i ens3 | grep 7777
